@@ -50,7 +50,7 @@ docker-compose up -d
 docker-compose down
 ```
 
-# うまく立ち上がらなかったら。。。
+うまく立ち上がらなかったら。。。
 ```bash
 docker-compose down
 docker-compose build --no-cache
