@@ -1,5 +1,3 @@
-# AEVCE FastAPI
-
 シンプルなTodo管理APIです。panorama-fastapiと同様のオニオンアーキテクチャを採用しています。
 
 ## 機能
@@ -29,7 +27,7 @@
 
 ```bash
 git clone <repository-url>
-cd aevce-fastapi
+cd sample-fastapi
 ```
 
 ### 2. 環境変数を設定
@@ -154,7 +152,7 @@ curl -X DELETE "http://localhost:8000/api/v1/todos/TODO_ID" \
 ## プロジェクト構造
 
 ```
-aevce-fastapi/
+sample-fastapi/
 ├── app/
 │   ├── main.py                 # エントリーポイント
 │   ├── api/                    # API層
@@ -289,7 +287,7 @@ docker-compose build --no-cache
 #### エラー: "Connection refused"
 ```bash
 # データベース接続確認
-docker-compose exec db psql -U postgres -d aevce_db -c "SELECT 1;"
+docker-compose exec db psql -U postgres -d sample_db -c "SELECT 1;"
 ```
 
 #### エラー: "Port already in use"
@@ -341,7 +339,7 @@ docker-compose exec app env | grep SECRET_KEY
 #### データベース直接接続
 ```bash
 # PostgreSQLに直接接続
-docker-compose exec db psql -U postgres -d aevce_db
+docker-compose exec db psql -U postgres -d sample_db
 
 # テーブル一覧確認
 \dt
@@ -359,7 +357,7 @@ docker-compose exec db psql -U postgres -d aevce_db
 #### 2. データベース最適化
 ```bash
 # 不要なデータ削除
-docker-compose exec db psql -U postgres -d aevce_db -c "VACUUM;"
+docker-compose exec db psql -U postgres -d sample_db -c "VACUUM;"
 ```
 
 #### 3. Docker最適化
