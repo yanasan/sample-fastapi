@@ -20,14 +20,17 @@ def get_current_user(
     )
     
     try:
-        payload = AuthUtils.decode_token(credentials.credentials)
-        email: str = payload.get("sub")
-        if email is None:
-            raise credentials_exception
+        payload = AuthUtils.decode_jwt(credentials.credentials)
     except JWTError:
         raise credentials_exception
     
-    user = db.query(User).filter(User.email == email, User.is_deleted == False).first()
+    user_id = payload.get("sub")
+    token_type = payload.get("type")
+    
+    if user_id is None or token_type != "access":
+        raise credentials_exception
+    
+    user = db.query(User).filter(User.id == user_id, User.is_deleted == False).first()
     if user is None:
         raise credentials_exception
     return user

@@ -12,9 +12,15 @@ class UserLogin(BaseModel):
     password: str
 
 
-class Token(BaseModel):
+class TokenResponse(BaseModel):
     access_token: str
     token_type: str
+    refresh_token: str
+    expires_in: int  # アクセストークンの有効期間（秒）
+
+
+class RefreshTokenRequest(BaseModel):
+    refresh_token: str
 
 
 class TokenData(BaseModel):
