@@ -50,6 +50,13 @@ docker-compose up -d
 docker-compose down
 ```
 
+# うまく立ち上がらなかったら。。。
+```bash
+docker-compose down
+docker-compose build --no-cache
+docker-compose up
+```
+
 ### 4. ローカル開発（仮想環境）
 
 ```bash
